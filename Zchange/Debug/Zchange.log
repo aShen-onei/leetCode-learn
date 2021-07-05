@@ -1,0 +1,4 @@
+﻿  Zchange.cpp
+E:\testwork\leetcode\Zchange\Zchange.cpp(12,13): warning C4018: “<”: 有符号/无符号不匹配
+E:\testwork\leetcode\Zchange\Zchange.cpp(16,15): warning C4018: “>”: 有符号/无符号不匹配
+  Zchange.vcxproj -> E:\testwork\leetcode\Debug\Zchange.exe
