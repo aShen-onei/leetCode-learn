@@ -3,13 +3,46 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
 
+using namespace std;
+std::string convert(std::string s, int rows) {
+    std::string sub = "";
+    int stdNum = rows + (rows - 2);
+    for (int i = 0; i < rows; i++) {
+        int addNum = stdNum - (i * 2);
+        for (int j = i; j < s.length(); j += addNum) {
+            sub += s[j];
+        }
+    }
+    return sub;
+}
+std::string leetcode(std::string s, int rowNum) {
+    // 如果当前只分一行，则返回
+    if (rowNum == 1) return s;
+    // 判断有多少个非空行数，就创建多少个字符串数组用来存放
+    vector<string> rows(min(rowNum, int(s.size())));
+    // 当前的行数
+    int currRow = 0;
+    // 当前的方向，如果是向下正向，则行数+1，如果到底部，方向要反转，行数-1
+    bool dir = false;
+    for (char c : s) {
+        rows[currRow] += c;
+        if (currRow == 0 || currRow == rowNum - 1) dir = !dir;
+        currRow += dir ? 1 : -1;
+    }
+    string res = "";
+    for (string row : rows) {
+        res += row;
+    }
+    return res;
+
+}
 int main()
 {
-    std::cout << "Hello World!\n";
-}
-std::string convert(std::string s, int rows) {
-    return "12312";
+    std::string s = "PAYPALISHIRING";
+    std::string res = leetcode(s, 3);
+    std::cout << res << std::endl;
 }
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
 // 调试程序: F5 或调试 >“开始调试”菜单
