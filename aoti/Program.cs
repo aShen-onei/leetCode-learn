@@ -7,28 +7,46 @@ namespace aoti
     {
         static void Main(string[] args)
         {
-            var x = "1231231";
+            var x = " -42";
             Console.WriteLine(aoti(x));
         }
-        public static int aoti(string x)
+        /// <summary>
+        /// 这里的这个问题是https://leetcode-cn.com/problems/string-to-integer-atoi/
+        /// 类C++的atoi函数实现，这里的逻辑清晰的写了出来，主要考察的是需要考虑多个方面的地方
+        /// 考虑周全才能够AC，可以引入自动机的概念，详细可见leetcode解答（就是把所有情况都罗列，每一步的状态罗列出来
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        public static int aoti(string s)
         {
-            Boolean sign = true;
+            s = s.Trim();
+            Boolean sign = s[0] == '-';
             var str = "";
-            x.Trim();
-            int number;
-            foreach (var c in x)
+
+            long res = 0;
+            for (int i = 0; i < s.Length; i++)
             {
-                if (Int32.TryParse(c.ToString(), out number))
+
+                if (Int64.TryParse(s[i].ToString(), out res))
                 {
-                    str += c;
+                    str += s[i];
+                } else if (s[i] == '+' || s[i] == '-')
+                {
+                    continue;
+                } else
+                {
+                    break;
                 }
             }
-            var res = int.Parse(str);
-            if (res > int.MaxValue || res < int.MinValue)
+            res = str.Length == 0 ? 0 : int.Parse(str);
+            if (res > int.MaxValue)
             {
-                res = 0;
+                res = int.MaxValue;
+            } else if (res < int.MinValue)
+            {
+                res = int.MinValue;
             }
-            return res;
+            return sign ? (int)res * -1 : (int)res;
         }
     }
 }
