@@ -6,7 +6,7 @@ namespace IntReverse
     {
         static void Main(string[] args)
         {
-            int k = -2147483412;
+            int k = 123;
             Console.WriteLine(MathReserve(k));
         }
         public static int Reverse(int x)
