@@ -24,7 +24,7 @@ namespace LongestDecomposition
                 {
                     k += 2;
                     left = right = "";
-                } else if (i == len - 1 -i || i == len - i)
+                } else if (i == len - 1 -i || i == len - 2 - i)
                 {
                     k++;
                 }
