@@ -6,9 +6,11 @@ namespace MinMoves
     {
         static void Main(string[] args)
         {
-            int[] nums = new int[6] { 1, 0, 0, 1, 0, 1 };
+            int[] nums = new int[6] { 1, 0, 0, 1, 0, 5 };
+            Array.Reverse(nums);
+            Console.WriteLine(nums[0]);
             int k = 2;
-            Console.WriteLine(MinMoves(nums, k));
+            // Console.WriteLine(MinMoves(nums, k));
         }
         static int MinMoves(int[] nums, int k)
         {
